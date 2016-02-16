@@ -13,4 +13,19 @@ su - admin
 #echo "% _topdir  /home/admin/rpmbuild" >~/.rpmmacros  
 #rpm -ivh zabbix-3.0.0-1.el7.src.rpm
 #cd rpmbuild/SPECS
-#rpmbuild -ba zabbix.spec
+#wget https://raw.githubusercontent.com/zabbixcn/zabbix3.0-rpm/master/zabbix-3.0.0.spec
+#rpmbuild -ba zabbix-3.0.0.spec
+#Wrote: /home/admin/rpmbuild/SRPMS/zabbix-3.0.0-1.el6.src.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-agent-3.0.0-1.el6.x86_64.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-get-3.0.0-1.el6.x86_64.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-sender-3.0.0-1.el6.x86_64.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-server-mysql-3.0.0-1.el6.x86_64.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-server-pgsql-3.0.0-1.el6.x86_64.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-proxy-mysql-3.0.0-1.el6.x86_64.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-proxy-pgsql-3.0.0-1.el6.x86_64.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-proxy-sqlite3-3.0.0-1.el6.x86_64.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-java-gateway-3.0.0-1.el6.x86_64.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/noarch/zabbix-web-3.0.0-1.el6.noarch.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/noarch/zabbix-web-mysql-3.0.0-1.el6.noarch.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/noarch/zabbix-web-pgsql-3.0.0-1.el6.noarch.rpm
+#Wrote: /home/admin/rpmbuild/RPMS/noarch/zabbix-web-japanese-3.0.0-1.el6.noarch.rpm
