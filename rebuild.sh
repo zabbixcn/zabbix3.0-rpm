@@ -1,4 +1,4 @@
-yum install -y rpm-build gcc make mysql-devel openldap-devel libssh2-devel net-snmp-devel curl-devel unixODBC-devel OpenIPMI-devel java-devel postgresql-devel gnutls-devel sqlite-devel libxml2-devel
+yum install -y git rpm-build gcc make mysql-devel openldap-devel libssh2-devel net-snmp-devel curl-devel unixODBC-devel OpenIPMI-devel java-devel postgresql-devel gnutls-devel sqlite-devel libxml2-devel
 git clone  https://github.com/zabbixcn/curl-rpm.git
 cd curl-rpm/RPMS
 rpm -ivh curl-7.29.0-25.el6.x86_64.rpm 
