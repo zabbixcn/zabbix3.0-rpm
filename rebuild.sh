@@ -10,6 +10,7 @@ adduser admin
 cp zabbix-3.0.0-1.el7.src.rpm /home/admin
 su - admin
 #切换到admin运行以下命令
+#echo "% _topdir  /home/admin/rpmbuild" >~/.rpmmacros  
 #rpm -ivh zabbix-3.0.0-1.el7.src.rpm
 #cd rpmbuild/SPECS
 #rpmbuild -ba zabbix.spec
