@@ -8,3 +8,8 @@ rpm -ivh http://repo.zabbix.com/non-supported/rhel/6/x86_64/iksemel-utils-1.4-2.
 wget http://repo.zabbix.com/zabbix/3.0/rhel/7/SRPMS/zabbix-3.0.0-1.el7.src.rpm
 adduser admin
 cp zabbix-3.0.0-1.el7.src.rpm /home/admin
+su - admin
+#切换到admin运行以下命令
+#rpm -ivh zabbix-3.0.0-1.el7.src.rpm
+#cd rpmbuild/SPECS
+#rpmbuild -ba zabbix.spec
