@@ -13,7 +13,7 @@ su - admin
 #echo "% _topdir  /home/admin/rpmbuild" >~/.rpmmacros  
 #rpm -ivh zabbix-3.0.0-1.el7.src.rpm
 #cd rpmbuild/SPECS
-#wget https://raw.githubusercontent.com/zabbixcn/zabbix3.0-rpm/master/zabbix-3.0.0.spec
+#wget https://raw.githubusercontent.com/zabbixcn/zabbix3.0-rpm/master/SPECS/zabbix.spec
 #rpmbuild -ba zabbix-3.0.0.spec
 #Wrote: /home/admin/rpmbuild/SRPMS/zabbix-3.0.0-1.el6.src.rpm
 #Wrote: /home/admin/rpmbuild/RPMS/x86_64/zabbix-agent-3.0.0-1.el6.x86_64.rpm
