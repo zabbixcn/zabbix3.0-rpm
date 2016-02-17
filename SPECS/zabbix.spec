@@ -394,6 +394,7 @@ rm $RPM_BUILD_ROOT%{_sbindir}/zabbix_java/lib/logback-console.xml
 mv $RPM_BUILD_ROOT%{_sbindir}/zabbix_java $RPM_BUILD_ROOT/%{_datadir}/zabbix-java-gateway
 install -m 0755 -p %{SOURCE14} $RPM_BUILD_ROOT%{_sbindir}/zabbix_java_gateway
 %endif
+mv $RPM_BUILD_ROOT%{_sbindir}/zabbix_java/lib/logback.xml $RPM_BUILD_ROOT/%{_sysconfdir}/zabbix/zabbix_java_gateway_logback.xml
 
 # install frontend files
 find frontends/php -name '*.orig' | xargs rm -f
@@ -421,7 +422,7 @@ mv $RPM_BUILD_ROOT%{_sysconfdir}/zabbix/zabbix_proxy.conf.d $RPM_BUILD_ROOT%{_sy
 install -dm 755 $RPM_BUILD_ROOT%{_docdir}/zabbix-agent-%{version}
 
 install -m 0644 conf/zabbix_agentd/userparameter_mysql.conf $RPM_BUILD_ROOT%{_sysconfdir}/zabbix/zabbix_agentd.d
-install -m 0644 conf/zabbix_agentd/userparameter_examples.conf $RPM_BUILD_ROOT%{_docdir}/zabbix-agent-%{version}
+install -m 0644 conf/zabbix_agentd/userparameter_examples.conf $RPM_BUILD_ROOT%{_datadir}/zabbix-agent-%{version}
 
 cat conf/zabbix_agentd.conf | sed \
 	-e '/^# PidFile=/a \\nPidFile=%{_localstatedir}/run/zabbix/zabbix_agentd.pid' \
@@ -491,35 +492,35 @@ install -Dm 0644 -p %{SOURCE15} $RPM_BUILD_ROOT%{_prefix}/lib/tmpfiles.d/zabbix-
 
 %if %{build_server}
 # copy sql files for servers
-docdir=$RPM_BUILD_ROOT%{_docdir}/zabbix-server-mysql-%{version}
-install -dm 755 $docdir
-cat database/mysql/schema.sql > $docdir/create.sql
-cat database/mysql/images.sql >> $docdir/create.sql
-cat database/mysql/data.sql >> $docdir/create.sql
-gzip $docdir/create.sql
+datadir=$RPM_BUILD_ROOT%{_datadir}/zabbix-server-mysql-%{version}
+install -dm 755 $datadir
+cat database/mysql/schema.sql > $datadir/create.sql
+cat database/mysql/images.sql >> $datadir/create.sql
+cat database/mysql/data.sql >> $datadir/create.sql
+gzip $datadir/create.sql
 
-docdir=$RPM_BUILD_ROOT%{_docdir}/zabbix-server-pgsql-%{version}
-install -dm 755 $docdir
-cat database/postgresql/schema.sql > $docdir/create.sql
-cat database/postgresql/images.sql >> $docdir/create.sql
-cat database/postgresql/data.sql >> $docdir/create.sql
-gzip $docdir/create.sql
+datadir=$RPM_BUILD_ROOT%{_datadir}/zabbix-server-pgsql-%{version}
+install -dm 755 $datadir
+cat database/postgresql/schema.sql > $datadir/create.sql
+cat database/postgresql/images.sql >> $datadir/create.sql
+cat database/postgresql/data.sql >> $datadir/create.sql
+gzip $datadir/create.sql
 
 # copy sql files for proxyes
-docdir=$RPM_BUILD_ROOT%{_docdir}/zabbix-proxy-mysql-%{version}
-install -dm 755 $docdir
-cp database/mysql/schema.sql $docdir/schema.sql
-gzip $docdir/schema.sql
+datadir=$RPM_BUILD_ROOT%{_datadir}/zabbix-proxy-mysql-%{version}
+install -dm 755 $datadir
+cp database/mysql/schema.sql $datadir/schema.sql
+gzip $datadir/schema.sql
 
-docdir=$RPM_BUILD_ROOT%{_docdir}/zabbix-proxy-pgsql-%{version}
-install -dm 755 $docdir
-cp database/postgresql/schema.sql $docdir/schema.sql
-gzip $docdir/schema.sql
+datadir=$RPM_BUILD_ROOT%{_datadir}/zabbix-proxy-pgsql-%{version}
+install -dm 755 $datadir
+cp database/postgresql/schema.sql $datadir/schema.sql
+gzip $datadir/schema.sql
 
-docdir=$RPM_BUILD_ROOT%{_docdir}/zabbix-proxy-sqlite3-%{version}
-install -dm 755 $docdir
-cp database/sqlite3/schema.sql $docdir/schema.sql
-gzip $docdir/schema.sql
+datadir=$RPM_BUILD_ROOT%{_datadir}/zabbix-proxy-sqlite3-%{version}
+install -dm 755 $datadir
+cp database/sqlite3/schema.sql $datadir/schema.sql
+gzip $datadir/schema.sql
 %endif
 
 
@@ -824,7 +825,7 @@ fi
 %files agent
 %defattr(-,root,root,-)
 %doc AUTHORS ChangeLog COPYING NEWS README
-%{_docdir}/zabbix-agent-%{version}/
+%{_datadir}/zabbix-agent-%{version}/
 %config(noreplace) %{_sysconfdir}/zabbix/zabbix_agentd.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/zabbix-agent
 %dir %{_sysconfdir}/zabbix/zabbix_agentd.d
@@ -857,7 +858,7 @@ fi
 %files server-mysql
 %defattr(-,root,root,-)
 %doc AUTHORS ChangeLog COPYING NEWS README
-%{_docdir}/zabbix-server-mysql-%{version}/
+%{_datadir}/zabbix-server-mysql-%{version}/
 %attr(0640,root,zabbix) %config(noreplace) %{_sysconfdir}/zabbix/zabbix_server.conf
 %dir /usr/lib/zabbix/alertscripts
 %dir /usr/lib/zabbix/externalscripts
@@ -876,7 +877,7 @@ fi
 %files server-pgsql
 %defattr(-,root,root,-)
 %doc AUTHORS ChangeLog COPYING NEWS README
-%{_docdir}/zabbix-server-pgsql-%{version}/
+%{_datadir}/zabbix-server-pgsql-%{version}/
 %attr(0640,root,zabbix) %config(noreplace) %{_sysconfdir}/zabbix/zabbix_server.conf
 %dir /usr/lib/zabbix/alertscripts
 %dir /usr/lib/zabbix/externalscripts
@@ -895,7 +896,7 @@ fi
 %files proxy-mysql
 %defattr(-,root,root,-)
 %doc AUTHORS ChangeLog COPYING NEWS README
-%{_docdir}/zabbix-proxy-mysql-%{version}/
+%{_datadir}/zabbix-proxy-mysql-%{version}/
 %attr(0640,root,zabbix) %config(noreplace) %{_sysconfdir}/zabbix/zabbix_proxy.conf
 %dir /usr/lib/zabbix/externalscripts
 %config(noreplace) %{_sysconfdir}/logrotate.d/zabbix-proxy
@@ -913,7 +914,7 @@ fi
 %files proxy-pgsql
 %defattr(-,root,root,-)
 %doc AUTHORS ChangeLog COPYING NEWS README
-%{_docdir}/zabbix-proxy-pgsql-%{version}/
+%{_datadir}/zabbix-proxy-pgsql-%{version}/
 %attr(0640,root,zabbix) %config(noreplace) %{_sysconfdir}/zabbix/zabbix_proxy.conf
 %dir /usr/lib/zabbix/externalscripts
 %config(noreplace) %{_sysconfdir}/logrotate.d/zabbix-proxy
@@ -931,7 +932,7 @@ fi
 %files proxy-sqlite3
 %defattr(-,root,root,-)
 %doc AUTHORS ChangeLog COPYING NEWS README
-%{_docdir}/zabbix-proxy-sqlite3-%{version}/
+%{_datadir}/zabbix-proxy-sqlite3-%{version}/
 %attr(0640,root,zabbix) %config(noreplace) %{_sysconfdir}/zabbix/zabbix_proxy.conf
 %dir /usr/lib/zabbix/externalscripts
 %config(noreplace) %{_sysconfdir}/logrotate.d/zabbix-proxy
