@@ -33,6 +33,7 @@ mysql -uroot -p
 mysql> CREATE DATABASE zabbix CHARACTER SET utf8 COLLATE utf8_bin;
 mysql> GRANT ALL PRIVILEGES ON zabbix.* TO zabbix@localhost IDENTIFIED BY
 'zabbix';
+mysql> FLUSH PRIVILEGES;
 mysql> show databases;
 +--------------------+     
 | Database           |     
