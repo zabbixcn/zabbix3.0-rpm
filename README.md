@@ -1,5 +1,5 @@
 # zabbix3.0-rpm
-请参考微信公众号 http://mp.weixin.qq.com/s?__biz=MzA5NjgwNzM0OQ==&mid=401897477&idx=1&sn=9eda7c22a93b89e30cd1672af19a9c84
+请参考微信公众号 http://mp.weixin.qq.com/s?__biz=MzA5NjgwNzM0OQ==&mid=401895828&idx=1&sn=4e83cfb14fe02b7232b249b0627f2df4
 #系统版本要求
 本项目RPM仅用于Zabbix3.0 For CentOS 6 x64位的安装
 #环境要求
